@@ -1,8 +1,20 @@
-# Getting Started with Create React App
+# Flex Phase 3 Frontend Build
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a frontend application for a workout planning app. The objective is to show  
 
-## Available Scripts
+### Requirements
+* node version 16.11.1
+* npm version 8.5.0
+* yarn version 1.22.19
+
+### How to use
+Fork and clone
+run yarn install
+run yatn stsart 
+follow directions for backend (URL here)
+
+### Licensing (MIT)
+
 
 In the project directory, you can run:
 
