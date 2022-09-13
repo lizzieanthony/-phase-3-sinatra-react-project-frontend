@@ -1,6 +1,12 @@
 # Flex Phase 3 Frontend Build
 
-This is a frontend application for a workout planning app. The objective is to show ......... 
+This is a frontend application for a workout planning app. The objective is to show .........
+
+### Backend Repo
+- [Backend Repo URL](https://github.com/lizzieanthony/phase-3-sinatra-react-project-backend)
+
+
+
 
 ### Requirements
 * node version 16.11.1
