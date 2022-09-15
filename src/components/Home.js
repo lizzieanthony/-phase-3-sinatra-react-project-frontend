@@ -13,10 +13,7 @@ const Home = () => {
 
     return ( 
         <div className="home">
-            {workouts && <WorkoutList 
-            workouts={workouts} 
-            header="All Workouts" 
-            />}
+            {workouts && <WorkoutList workouts={workouts} header="All Workouts"/>}
         </div>
      );
 }
