@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap');
 
 
 * {
   margin: 0;
-  font-family: "Quicksand";
+  font-family: 'Montserrat', sans-serif;
   color: #333;
   /* text-align: center; */
 
@@ -52,4 +52,81 @@
 
 .workout-preview a{
   text-decoration: none;
+}
+.workout-info h2 {
+  font-size: 30px;
+  color: #f1356d;
+  margin-bottom: 10px;
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.workout-info h4 {
+  font-size: 25px;
+  margin: 10px 0;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.workout-info div {
+  margin: 20px 0;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+}
+.delete {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  position: absolute;
+}
+
+.exercise {
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  color: #f1356d;
+  margin: 20px 0;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold
+}
+
+.new {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.new label {
+  text-align: left;
+  display: block;
+}
+.new h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 30px;
+}
+.new input, .create textarea, .create select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+.new button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
 }

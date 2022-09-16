@@ -1,11 +1,59 @@
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const WorkoutInfo = () => {
-    const {id} = useParams();
-// re use fetch here somehow? {id} not connected
+const WorkoutInfo = ({workouts}) => {
+    const params = useParams();
+    const [workoutdelete, setWorkoutdelete] = useState([]);
+    const [workout, setWorkout] = useState({
+        name: "",
+        directions: "",
+        exercises: []
+    })
+
+    // console.log(params)
+    // console.log(workouts)
+
+    useEffect(() => {
+        // debugger
+        const workout = workouts.find(w => w.id === parseInt(params.id))
+        if (workout) {
+            // debugger
+            setWorkout(workout)
+        } 
+      }, [workouts]);
+
+      const allWorkoutExercises = workout.exercises.map(exercise => {
+          return (
+              <h5 className="exercise">{exercise.name}: <br /> <br />{exercise.instructions}</h5> 
+          )
+      })
+
+      function handleWorkoutDeleteClick(workout) {
+        fetch(`http://localhost:9292/workouts/${workout.id}`, {
+          method: "DELETE",
+        })
+          .then((r) => r.json())
+          .then(() => handleDeleteWorkout(workout))
+      }
+    
+      function handleDeleteWorkout(deletedWorkout) {
+        const updatedWorkouts = workoutdelete.filter((workout) => workout.id !== deletedWorkout.id)
+        setWorkoutdelete(updatedWorkouts)
+      }
+      
+
     return (  
         <div className="workout-info">
-            <h2>Workout Information - {id}</h2>
+            <div>
+            <h2>{workout.name}'s Workout</h2>
+                <h4>{workout.directions}</h4>
+                {/* <h4>{workout.exercises.map((exercise) => <h4>{exercise.name}</h4>)}</h4> */}
+                <h5>{allWorkoutExercises}</h5>
+                <button className="delete" onClick={() => handleWorkoutDeleteClick(workout)}>delete workout</button>
+            </div>
+            
+           
+            
         </div>
     );
 }
