@@ -112,9 +112,10 @@
 .new h2 {
   font-size: 20px;
   color: #f1356d;
-  margin-bottom: 30px;
+  margin: 30px;
 }
-.new input, .create textarea, .create select {
+.new input, .new textarea {
+  font-size: 16px;
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -129,4 +130,9 @@
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+}
+.new .submitted {
+  color: white;
+  background-color: #bf6609;
+  border-radius: 10px;
 }
