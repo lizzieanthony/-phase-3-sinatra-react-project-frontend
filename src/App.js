@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import { Route, Routes } from 'react-router-dom';
 import NewWorkout from "./components/NewWorkout";
+import WorkoutInfo from "./components/WorkoutInfo"
 
 const App = () => {
   return (
@@ -11,6 +12,8 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />}/>
         <Route exact path="/NewWorkout" element={<NewWorkout />}/>
+        <Route path="/Workout/:id" element={<WorkoutInfo />}/>
+
       </Routes>
     </>
 
