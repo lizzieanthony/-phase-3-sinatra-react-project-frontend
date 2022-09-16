@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NewWorkout = () => {
     const [workoutName, setWorkoutName] = useState('')
@@ -6,10 +7,12 @@ const NewWorkout = () => {
     const [exerciseName, setExerciseName] = useState([])
     const [instructions, setInstructions] = useState([])
     const [workoutAdded, setworkoutAdded] = useState(false)
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const workout = {name: workoutName, directions: overview, exerciseName, instructions};
+        debugger
     fetch("http://localhost:9292/workouts", {
         method: 'POST',
         headers: {"Content-Type": "application'json"},
@@ -17,6 +20,7 @@ const NewWorkout = () => {
     }).then(() => {
         console.log('new workout')
         setworkoutAdded('false')
+        navigate.push('/')
       })
     }
     return (  
@@ -49,13 +53,14 @@ const NewWorkout = () => {
                     value={instructions}
                     onChange={(e) => setInstructions(e.target.value)}
                     ></textarea>
+                    {/* if the first is false the second will output */}
                     {!workoutAdded && <button>Add Workout</button>}
                     {workoutAdded && <button className="submitted">Workout Added</button>}
             </form>
-            <p>{workoutName}</p>
+            {/* <p>{workoutName}</p>
             <p>{overview}</p>
             <p>{exerciseName}</p>
-            <p>{instructions}</p>
+            <p>{instructions}</p> */}
         </div>
         
     );
