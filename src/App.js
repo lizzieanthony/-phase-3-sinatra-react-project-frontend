@@ -7,6 +7,7 @@ import WorkoutInfo from "./components/WorkoutInfo"
 
 const App = () => {
   return (
+    // styling?
     <>
      <Navbar />
       <Routes>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import WorkoutList from "./WorkoutList";
-import WorkoutInfo from "./WorkoutInfo"
+// import WorkoutInfo from "./WorkoutInfo"
 
 const Home = () => {
    const [workouts, setWorkouts] = useState(null)
