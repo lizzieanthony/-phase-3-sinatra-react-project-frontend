@@ -11,7 +11,12 @@ const NewWorkout = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const workout = {name: workoutName, directions: overview, exerciseName, instructions};
+        const workout = {
+            name: workoutName, 
+            directions: overview, 
+            exercises: exerciseName,
+            exercises: instructions
+         };
         debugger
     fetch("http://localhost:9292/workouts", {
         method: 'POST',
@@ -19,8 +24,9 @@ const NewWorkout = () => {
         body: JSON.stringify(workout)
     }).then(() => {
         console.log('new workout')
+        debugger
         setworkoutAdded('false')
-        navigate.push('/')
+        navigate('/')
       })
     }
     return (  
