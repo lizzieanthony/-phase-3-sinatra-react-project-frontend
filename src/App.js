@@ -18,27 +18,25 @@ const App = () => {
       });
  }, []);
 
-  return (
-    // styling? 
-    <>
-     <Navbar />
+//  function addNewWorkout accept data sent from form 
+// or send workouts on to NewWorkout
+
+// function add exercise to a workout 
+
+  return ( 
+    <div className="content">
+    <Navbar />
+    <br />
       <Routes>
         <Route exact path="/" element={<Home workouts={workouts}/>}/>
         <Route exact path="/NewWorkout" element={<NewWorkout />}/>
         <Route path="/Workout/:id" element={<WorkoutInfo workouts={workouts}/>}/>
 
       </Routes>
-    </>
-
-  // <Routes>
-  //   <div className="App">
-  //     <Navbar />
-  //     <div className="content">
-  //         <Route exact path="/" element={<Home />}/>
-  //     </div>
-  //   </div>
-  // </Routes>
+    </div>
+     
   );
 }
 
 export default App;
+

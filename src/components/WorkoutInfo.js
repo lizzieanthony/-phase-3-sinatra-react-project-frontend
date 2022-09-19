@@ -1,7 +1,8 @@
-import { useParams} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const WorkoutInfo = ({workouts}) => {
+    const navigate = useNavigate()
     const params = useParams();
     const [workoutdelete, setWorkoutdelete] = useState([]);
     const [workout, setWorkout] = useState({
@@ -10,14 +11,9 @@ const WorkoutInfo = ({workouts}) => {
         exercises: []
     })
 
-    // console.log(params)
-    // console.log(workouts)
-
     useEffect(() => {
-        // debugger
         const workout = workouts.find(w => w.id === parseInt(params.id))
         if (workout) {
-            // debugger
             setWorkout(workout)
         } 
       }, [workouts]);
@@ -34,6 +30,7 @@ const WorkoutInfo = ({workouts}) => {
         })
           .then((r) => r.json())
           .then(() => handleDeleteWorkout(workout))
+          navigate('/') 
       }
     
       function handleDeleteWorkout(deletedWorkout) {
