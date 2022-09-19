@@ -17,14 +17,14 @@ const NewWorkout = () => {
             exercises: exerciseName,
             exercises: instructions
          };
-        debugger
+        // debugger
     fetch("http://localhost:9292/workouts", {
         method: 'POST',
         headers: {"Content-Type": "application'json"},
         body: JSON.stringify(workout)
     }).then(() => {
         console.log('new workout')
-        debugger
+        // debugger
         setworkoutAdded('false')
         navigate('/')
       })
@@ -59,9 +59,7 @@ const NewWorkout = () => {
                     value={instructions}
                     onChange={(e) => setInstructions(e.target.value)}
                     ></textarea>
-                    {/* if the first is false the second will output */}
-                    {!workoutAdded && <button>Add Workout</button>}
-                    {workoutAdded && <button className="submitted">Workout Added</button>}
+                <button>Add Workout</button>
             </form>
             {/* <p>{workoutName}</p>
             <p>{overview}</p>
