@@ -29,7 +29,7 @@ const App = () => {
     <br />
       <Routes>
         <Route exact path="/" element={<Home workouts={workouts}/>}/>
-        <Route exact path="/NewWorkout" element={<NewWorkout />}/>
+        <Route exact path="/NewWorkout" element={<NewWorkout workouts={workouts}/>}/>
         <Route path="/Workout/:id" element={<WorkoutInfo workouts={workouts}/>}/>
 
       </Routes>
