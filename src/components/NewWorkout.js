@@ -9,23 +9,25 @@ const NewWorkout = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const workout = {
-            name: workoutName, 
-            directions: overview, 
-            exercises: []
-         };
+
+        setworkoutAdded(true);
+            fetch("http://localhost:9292/workouts", {
+                method: 'POST',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name: workoutName, 
+                    directions: overview, 
+                    exercises: []
+                })
+            }).then(() => {
+                console.log('new workout')
+                // debugger
+                setworkoutAdded('false')
+                navigate('/')
+            }) 
+    };
         // debugger
-    fetch("http://localhost:9292/workouts", {
-        method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(workout)
-    }).then(() => {
-        console.log('new workout')
-        // debugger
-        setworkoutAdded('false')
-        navigate('/')
-      })
-    }
+
     return (  
         <div className="new">
             <h2>Add a New Workout</h2>
@@ -43,12 +45,8 @@ const NewWorkout = () => {
                     value={overview}
                     onChange={(e) => setOverview(e.target.value)}
                     ></textarea>
-                <button>Add Workout</button>
+                {!workoutAdded && <button>Add Workout</button>}
             </form>
-            {/* <p>{workoutName}</p>
-            <p>{overview}</p>
-            <p>{exerciseName}</p>
-            <p>{instructions}</p> */}
         </div>
         
     );

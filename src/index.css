@@ -27,9 +27,10 @@
   margin-left: 16px;
   text-decoration: none;
   padding: 6px;
+  color: #f1356d
 }
 .navbar a:hover {
-  color: #f1356d;
+  color: #ffa0af
 }
 .content {
   max-width: 600px;
@@ -40,9 +41,11 @@
   padding: 10px 16px;
   margin: 20px 0;
   border-bottom: 1px solid #fafafa;
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+
 }
 .workout-preview:hover {
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  background-color: #ffd3da;
 }
 .workout-preview h2 {
   font-size: 20px;
