@@ -21,7 +21,7 @@ const App = () => {
 //  function addNewWorkout accept data sent from form 
 // or send workouts on to NewWorkout
 
-// function add exercise to a workout 
+// function add exercise to a workout
 
   return ( 
     <div className="content">

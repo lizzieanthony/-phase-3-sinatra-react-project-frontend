@@ -10,6 +10,10 @@ const WorkoutInfo = ({workouts}) => {
         directions: "",
         exercises: []
     })
+    const [exerciseName, setExerciseName] = useState([])
+    const [instructions, setInstructions] = useState([])
+    const [exerciseAdded, setExerciseAdded] = useState(false)
+
 
     useEffect(() => {
         const workout = workouts.find(w => w.id === parseInt(params.id))
@@ -23,6 +27,29 @@ const WorkoutInfo = ({workouts}) => {
               <h5 className="exercise">{exercise.name}: <br /> <br />{exercise.instructions}</h5> 
           )
       })
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        const exercise = {
+            exercises: [{
+                name: exerciseName,
+                instructions: instructions,
+            }],
+         };
+
+        setExerciseAdded(true);
+            fetch("http://localhost:9292/workouts", {
+                method: 'POST',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(exercise)
+            })
+            .then((r) => r.json())
+            .then((newWorkout) => {
+                console.log('new workout', newWorkout)
+                setExerciseAdded('false')
+                // navigate('/')
+            }) 
+    };
 
       function handleWorkoutDeleteClick(workout) {
         fetch(`http://localhost:9292/workouts/${workout.id}`, {
@@ -41,16 +68,29 @@ const WorkoutInfo = ({workouts}) => {
 
     return (  
         <div className="workout-info">
-            <div>
+          <div>
             <h2>{workout.name}'s Workout</h2>
-                <h4>{workout.directions}</h4>
-                {/* <h4>{workout.exercises.map((exercise) => <h4>{exercise.name}</h4>)}</h4> */}
-                <h5>{allWorkoutExercises}</h5>
-                <button className="delete" onClick={() => handleWorkoutDeleteClick(workout)}>delete workout</button>
-            </div>
-            
-           
-            
+            <h4>{workout.directions}</h4>
+            <h5>{allWorkoutExercises}</h5>
+            <form className="new">
+                <label >Exercise Name:</label>
+                <input 
+                    type="text"
+                    required
+                    value={exerciseName}
+                    onChange={(e) => setExerciseName(e.target.value)}
+                    />
+                <label>Exercise Instructions:</label>
+                <textarea
+                    required
+                    value={instructions}
+                    onChange={(e) => setInstructions(e.target.value)}
+                ></textarea>
+                <button className="button">add exercise to workout</button>
+                </form>
+            <br />
+            <button className="button" onClick={() => handleWorkoutDeleteClick(workout)}>delete this workout</button>
+          </div>  
         </div>
     );
 }

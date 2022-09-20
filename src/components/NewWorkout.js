@@ -6,6 +6,7 @@ const NewWorkout = () => {
     const [overview, setOverview] = useState('')
     const [workoutAdded, setworkoutAdded] = useState(false)
     const navigate = useNavigate();
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,11 +21,12 @@ const NewWorkout = () => {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(workout)
-            }).then(() => {
-                console.log('new workout')
-                // debugger
+            })
+            .then((r) => r.json())
+            .then((newWorkout) => {
+                console.log('new workout', newWorkout)
                 setworkoutAdded('false')
-                navigate(`workouts/${workout.id}`)
+                navigate('/')
             }) 
     };
         // debugger
