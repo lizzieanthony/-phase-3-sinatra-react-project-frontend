@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const NewWorkout = () => {
+const NewWorkout = ({workouts, setWorkouts}) => {
     const [workoutName, setWorkoutName] = useState('')
     const [overview, setOverview] = useState('')
     const [workoutAdded, setworkoutAdded] = useState(false)
@@ -24,9 +24,11 @@ const NewWorkout = () => {
             })
             .then((r) => r.json())
             .then((newWorkout) => {
-                console.log('new workout', newWorkout)
+                
+                const updatedWorkouts = [...workouts, newWorkout]
+                setWorkouts(updatedWorkouts)
                 setworkoutAdded('false')
-                navigate('/')
+                navigate(`/workout/${newWorkout.id}`)
             }) 
     };
         // debugger

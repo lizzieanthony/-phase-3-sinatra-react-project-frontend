@@ -1,33 +1,37 @@
 import { useNavigate, useParams} from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const WorkoutInfo = ({workouts}) => {
+const WorkoutInfo = ({workouts, setWorkouts}) => {
     const navigate = useNavigate()
     const params = useParams();
     const [workoutdelete, setWorkoutdelete] = useState([]);
     const [workout, setWorkout] = useState({
         name: "",
         directions: "",
-        exercises: []
+        exercises: [{
+            name: "",
+            instructions: "",
+        }]
     })
     const [exerciseName, setExerciseName] = useState([])
     const [instructions, setInstructions] = useState([])
     const [exerciseAdded, setExerciseAdded] = useState(false)
-
+    const [allWorkoutExercises, setAllWorkoutExercises] = useState([])
 
     useEffect(() => {
         const workout = workouts.find(w => w.id === parseInt(params.id))
         if (workout) {
             setWorkout(workout)
+            if (workout.exercises) {
+                setAllWorkoutExercises(workout.exercises.map(exercise => {
+                        return (
+                            <h5 className="exercise">{exercise.name}: <br /> <br />{exercise.instructions}</h5> 
+                        )
+                    }))
+            }
         } 
       }, [workouts]);
-
-      const allWorkoutExercises = workout.exercises.map(exercise => {
-          return (
-              <h5 className="exercise">{exercise.name}: <br /> <br />{exercise.instructions}</h5> 
-          )
-      })
-
+ 
       const handleSubmit = (e) => {
         e.preventDefault();
         const exercise = {
@@ -38,14 +42,15 @@ const WorkoutInfo = ({workouts}) => {
          };
 
         setExerciseAdded(true);
-            fetch("http://localhost:9292/workouts", {
+            fetch(`http://localhost:9292/workouts/${workout.id}`, {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(exercise)
             })
             .then((r) => r.json())
-            .then((newWorkout) => {
-                console.log('new workout', newWorkout)
+            .then((workoutInfo) => {
+                const updatedExercises = [...workouts, workoutInfo]
+                setWorkouts(updatedExercises)
                 setExerciseAdded('false')
                 // navigate('/')
             }) 
