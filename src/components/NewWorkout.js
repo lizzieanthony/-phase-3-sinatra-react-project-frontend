@@ -50,7 +50,7 @@ const NewWorkout = ({workouts, setWorkouts}) => {
                     value={overview}
                     onChange={(e) => setOverview(e.target.value)}
                     ></textarea>
-                {!workoutAdded && <button>Add Exercises</button>}
+                 <button>Add Exercises</button>
             </form>
         </div>
         

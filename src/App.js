@@ -3,35 +3,48 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import { Route, Routes } from 'react-router-dom';
 import NewWorkout from "./components/NewWorkout";
-import WorkoutInfo from "./components/WorkoutInfo"
+import WorkoutInfo from "./components/WorkoutInfo";
+import EditWorkout from "./components/EditWorkout";
 
 const App = () => {
 
   const [workouts, setWorkouts] = useState([])
+  const [workoutdelete, setWorkoutdelete] = useState([]);
+
 
   useEffect(() => {
    fetch("http://localhost:9292/workouts")
      .then((r) => r.json())
      .then((workouts) => {
-      //  debugger
        setWorkouts(workouts)
       });
- }, []);
+ }, [workoutdelete]);
 
-//  function addNewWorkout accept data sent from form 
-// or send workouts on to NewWorkout
+ function handleUpdateWorkout(updatedWorkoutInfo) {
+   const updatedWorkouts = workouts.map(workout => {
+     if (workout.id === updatedWorkoutInfo.id) {
+       return updatedWorkoutInfo;
+     } else {
+       return workout;
+     }
+   });
+   setWorkouts(updatedWorkouts);
+ }
 
-// function add exercise to a workout
+ function handleDeleteWorkout(deletedWorkout) {
+  const updatedWorkouts = workoutdelete.filter((workout) => workout.id !== deletedWorkout.id)
+  setWorkoutdelete(updatedWorkouts)
+}
 
   return ( 
     <div className="content">
     <Navbar />
     <br />
       <Routes>
-        <Route exact path="/" element={<Home workouts={workouts}/>}/>
+        <Route exact path="/" element={<Home workouts={workouts} onWorkoutDelete={handleDeleteWorkout}/>}/>
         <Route exact path="/NewWorkout" element={<NewWorkout setWorkouts={setWorkouts} workouts={workouts}/>}/>
-        <Route path="/Workout/:id" element={<WorkoutInfo workouts={workouts}/>}/>
-
+        <Route path="/Workout/:id" element={<WorkoutInfo workouts={workouts} setWorkouts={setWorkouts} onWorkoutDelete={handleDeleteWorkout} onUpdateWorkout={handleUpdateWorkout}/>}/>
+        <Route path="/workouts/:id/edit" element={<EditWorkout setWorkouts={setWorkouts} workouts={workouts} onUpdateWorkout={handleUpdateWorkout}/>}/>
       </Routes>
     </div>
      
