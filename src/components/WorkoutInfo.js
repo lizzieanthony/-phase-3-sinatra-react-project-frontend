@@ -8,10 +8,7 @@ const WorkoutInfo = ({workouts, setWorkouts}) => {
     const [workout, setWorkout] = useState({
         name: "",
         directions: "",
-        exercises: [{
-            name: "",
-            instructions: "",
-        }]
+        exercises: []
     })
     const [exerciseName, setExerciseName] = useState([])
     const [instructions, setInstructions] = useState([])
@@ -32,7 +29,7 @@ const WorkoutInfo = ({workouts, setWorkouts}) => {
         } 
       }, [workouts]);
  
-      const handleSubmit = (e) => {
+      const handleAddExercise = (e) => {
         e.preventDefault();
         const exercise = {
             exercises: [{
@@ -42,18 +39,20 @@ const WorkoutInfo = ({workouts, setWorkouts}) => {
          };
 
         setExerciseAdded(true);
+        setTimeout(() => {
             fetch(`http://localhost:9292/workouts/${workout.id}`, {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(exercise)
             })
             .then((r) => r.json())
-            .then((workoutInfo) => {
-                const updatedExercises = [...workouts, workoutInfo]
+            .then((newExercise) => {
+                const updatedExercises = [...workouts, newExercise]
                 setWorkouts(updatedExercises)
                 setExerciseAdded('false')
-                // navigate('/')
+                navigate(`/workout/${newExercise.id}`)
             }) 
+        }, 1000);
     };
 
       function handleWorkoutDeleteClick(workout) {
@@ -77,7 +76,7 @@ const WorkoutInfo = ({workouts, setWorkouts}) => {
             <h2>{workout.name}'s Workout</h2>
             <h4>{workout.directions}</h4>
             <h5>{allWorkoutExercises}</h5>
-            <form className="new">
+            <form className="new" onSubmit={handleAddExercise}>
                 <label >Exercise Name:</label>
                 <input 
                     type="text"
