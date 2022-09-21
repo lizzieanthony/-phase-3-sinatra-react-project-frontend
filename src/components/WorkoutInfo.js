@@ -8,7 +8,8 @@ const WorkoutInfo = ({workouts, setWorkouts}) => {
     const [workout, setWorkout] = useState({
         name: "",
         directions: "",
-        exercises: []
+        exercises: [],
+        id: null
     })
     const [exerciseName, setExerciseName] = useState([])
     const [instructions, setInstructions] = useState([])
@@ -32,15 +33,13 @@ const WorkoutInfo = ({workouts, setWorkouts}) => {
       const handleAddExercise = (e) => {
         e.preventDefault();
         const exercise = {
-            exercises: [{
                 name: exerciseName,
-                instructions: instructions,
-            }],
+                instructions: instructions
          };
 
         setExerciseAdded(true);
         setTimeout(() => {
-            fetch(`http://localhost:9292/workouts/${workout.id}`, {
+            fetch(`http://localhost:9292/workouts/${workout.id}/exercises`, {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(exercise)
@@ -50,7 +49,7 @@ const WorkoutInfo = ({workouts, setWorkouts}) => {
                 const updatedExercises = [...workouts, newExercise]
                 setWorkouts(updatedExercises)
                 setExerciseAdded('false')
-                navigate(`/workout/${newExercise.id}`)
+                navigate(`/workout/${workout.id}`)
             }) 
         }, 1000);
     };
