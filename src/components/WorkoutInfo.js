@@ -9,7 +9,6 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
     const [instructions, setInstructions] = useState([])
     const [exerciseAdded, setExerciseAdded] = useState(false)
     const [allWorkoutExercises, setAllWorkoutExercises] = useState([])
-    
     const [workout, setWorkout] = useState({
         name: "",
         directions: "",
@@ -87,6 +86,10 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
           })
             .then((r) => r.json())
             .then((data) => {onExerciseDelete(exercise.id)})
+  }
+
+  function passWorkout() {
+      return <EditWorkout workout={workout}/>
   }
 
     return (  
