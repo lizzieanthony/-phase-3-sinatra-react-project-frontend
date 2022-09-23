@@ -44,12 +44,12 @@ const App = () => {
 // set workouts to the map answe
 function handleDeleteExercise(deletedExercise) {
   // debugger
-  const updatedExercises = workouts.map(workout => {
-    if (workout.exercise.id !== deletedExercise.id )
-  })
+  const updatedExercises = exerciseDelete.filter((exercise) => exercise.id !== deletedExercise.id)
+  setExerciseDelete(updatedExercises)
 
-  // const updatedExercises = exerciseDelete.filter((exercise) => exercise.id !== deletedExercise.id)
-  // setExerciseDelete(updatedExercises)
+  // const updatedExercises = workouts.map(workout => {
+  //   if (workout.exercise.id !== deletedExercise.id )
+  // })
 }
 
   return ( 
@@ -58,8 +58,8 @@ function handleDeleteExercise(deletedExercise) {
     <br />
       <Routes>
         <Route exact path="/" element={<Home workouts={workouts} onWorkoutDelete={handleDeleteWorkout}/>}/>
-        <Route exact path="/NewWorkout" element={<NewWorkout setWorkouts={setWorkouts} workouts={workouts}/>}/>
-        <Route path="/Workouts/:id" element={<WorkoutInfo workouts={workouts} setWorkouts={setWorkouts} onWorkoutDelete={handleDeleteWorkout} onExerciseDelete={handleDeleteExercise} onUpdateWorkout={handleUpdateWorkout}/>}/>
+        <Route exact path="/newworkout" element={<NewWorkout setWorkouts={setWorkouts} workouts={workouts}/>}/>
+        <Route path="/workouts/:id" element={<WorkoutInfo workouts={workouts} setWorkouts={setWorkouts} onWorkoutDelete={handleDeleteWorkout} onExerciseDelete={handleDeleteExercise} onUpdateWorkout={handleUpdateWorkout}/>}/>
         <Route path="/workouts/:id/edit" element={<EditWorkout setWorkouts={setWorkouts} workouts={workouts} onUpdateWorkout={handleUpdateWorkout}/>}/>
       </Routes>
     </div>

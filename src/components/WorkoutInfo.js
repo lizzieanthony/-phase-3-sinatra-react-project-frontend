@@ -62,11 +62,11 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
                     <br /> <br />
                     {exercise.instructions}
                     <br />
-                    <button className="exercise" onClick={() => handleExerciseDeleteClick(exercise, workout)}>X</button>
+                    <button className="exercise" onClick={() => handleExerciseDeleteClick(exercise)}>X</button>
                 </h5> ] 
                 setAllWorkoutExercises(updatedExercises)
                 setExerciseAdded('false')
-                navigate(`/workout/${workout.id}`)
+                navigate(`/workouts/${workout.id}`)
             }) 
     };
 
@@ -80,13 +80,12 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
       }
 
       function handleExerciseDeleteClick(exercise, workout) {
-          debugger
+        //   debugger
         fetch(`http://localhost:9292/workouts/${exercise.workout_id}/exercise/${exercise.id}`, {
             method: "DELETE",
           })
             .then((r) => r.json())
             .then(() => onExerciseDelete(exercise.id))
-            // navigate('/workouts/${workout.id}')
   }
 
     return (  

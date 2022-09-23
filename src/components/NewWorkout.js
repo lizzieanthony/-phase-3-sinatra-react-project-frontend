@@ -28,7 +28,7 @@ const NewWorkout = ({workouts, setWorkouts}) => {
                 const updatedWorkouts = [...workouts, newWorkout]
                 setWorkouts(updatedWorkouts)
                 setworkoutAdded('false')
-                navigate(`/workout/${newWorkout.id}`)
+                navigate(`/workouts/${newWorkout.id}`)
             }) 
     };
         // debugger

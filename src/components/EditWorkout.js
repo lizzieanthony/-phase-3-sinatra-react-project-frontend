@@ -34,7 +34,7 @@ const EditWorkout = ({workouts, onUpdateWorkout}) => {
          .then(updatedWorkout => {
              onUpdateWorkout(updatedWorkout)
              setworkoutUpdated ('false')
-            navigate(`/workout/${workout.id}`)
+            navigate(`/workouts/${workout.id}`)
          })
     };
 
