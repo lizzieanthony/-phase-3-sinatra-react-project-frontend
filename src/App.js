@@ -37,19 +37,9 @@ const App = () => {
   setWorkoutDelete(updatedWorkouts)
 }
 
-// find workout 
-  // filter that workouts exercises
-  // map through all workouts returning the workout as is if its not the right one 
-  // returning the workout with the new set of filtered exercises 
-// set workouts to the map answe
 function handleDeleteExercise(deletedExercise) {
-  // debugger
   const updatedExercises = exerciseDelete.filter((exercise) => exercise.id !== deletedExercise.id)
   setExerciseDelete(updatedExercises)
-
-  // const updatedExercises = workouts.map(workout => {
-  //   if (workout.exercise.id !== deletedExercise.id )
-  // })
 }
 
   return ( 

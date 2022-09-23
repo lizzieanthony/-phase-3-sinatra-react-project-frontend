@@ -21,7 +21,6 @@ const EditWorkout = ({workouts, onUpdateWorkout}) => {
             name: workoutName, 
             directions: overview, 
             id: params.id
-            // exercises: [],
          };
 
          setworkoutUpdated (true);

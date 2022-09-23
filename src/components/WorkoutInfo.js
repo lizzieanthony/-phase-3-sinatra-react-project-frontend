@@ -9,6 +9,7 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
     const [instructions, setInstructions] = useState([])
     const [exerciseAdded, setExerciseAdded] = useState(false)
     const [allWorkoutExercises, setAllWorkoutExercises] = useState([])
+    
     const [workout, setWorkout] = useState({
         name: "",
         directions: "",
@@ -19,7 +20,7 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
         name: exerciseName,
         instructions: instructions,
     })
-    
+
     useEffect(() => {
         const workout = workouts.find(w => w.id === parseInt(params.id))
         if (workout) {
@@ -27,7 +28,6 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
             if (workout.exercises) {
                 setAllWorkoutExercises(workout.exercises.map(exercise => {
                         return (
-                            // allWorkoutExercises.map(() =>  somehow ?
                             <h5 className="exercise">
                             {exercise.name}: 
                              <br /> <br />
@@ -82,21 +82,23 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
       function handleExerciseDeleteClick(exercise) {
         //   exercise.workout_id = undefined 
         // exercise.id = undefined 
-        fetch(`http://localhost:9292/workouts/${exercise.workout_id}/exercise/${exercise.id}`, {
+        fetch(`http://localhost:9292/workouts/${exercise.workout_id}/exercises/${exercise.id}`, {
             method: "DELETE",
           })
             .then((r) => r.json())
-            .then((data) => {debugger; onExerciseDelete(exercise.id)})
+            .then((data) => {onExerciseDelete(exercise.id)})
   }
 
     return (  
         <div className="workout-info">
           <div>
-          <Link to={`/workouts/${workout.id}/edit`}>
-          <button className="button" onClick={onUpdateWorkout}>Edit workout</button>
-          </Link>
             <h2>{workout.name}'s Workout</h2>
             <h4>{workout.directions}</h4>
+            <Link to={`/workouts/${workout.id}/edit`}>
+            <button className="button" onClick={onUpdateWorkout}>Edit workout</button>
+            <br />
+            </Link>
+            <br />
             <h5>{allWorkoutExercises}</h5>
             <form className="new" onSubmit={handleAddExercise}>
                 <label >Exercise Name:</label>
