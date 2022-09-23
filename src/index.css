@@ -91,6 +91,17 @@
   cursor: pointer;
 }
 
+.exercise button {
+  background: #ffd3da;
+  color: #f1356d;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+  text-align: right;
+  border-radius: 50%;
+  margin: 10px
+}
+
 .exercise {
   box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
   color: #f1356d;

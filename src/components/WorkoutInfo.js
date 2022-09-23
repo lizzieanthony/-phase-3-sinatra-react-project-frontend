@@ -2,7 +2,7 @@ import { useNavigate, useParams, Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 import EditWorkout from "./EditWorkout";
 
-const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete}) => {
+const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDelete}) => {
     const navigate = useNavigate()
     const params = useParams()
     const [exerciseName, setExerciseName] = useState([])
@@ -14,7 +14,11 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete}) => {
         directions: "",
         exercises: [],
         id: null
-    });
+    })
+    const [exercise, setExercise] = useState ({
+        name: exerciseName,
+        instructions: instructions,
+    })
     
     useEffect(() => {
         const workout = workouts.find(w => w.id === parseInt(params.id))
@@ -23,11 +27,13 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete}) => {
             if (workout.exercises) {
                 setAllWorkoutExercises(workout.exercises.map(exercise => {
                         return (
-                            // allWorkoutExercises.map(() => <h5 className="exercise">{exercise.name}: <br /> <br />{exercise.instructions}</h5>) 
+                            // allWorkoutExercises.map(() =>  somehow ?
                             <h5 className="exercise">
                             {exercise.name}: 
-                            <br /> <br />
+                             <br /> <br />
                             {exercise.instructions}
+                            <br />
+                            <button className="exercise" onClick={() => handleExerciseDeleteClick(exercise)}>X</button>
                             </h5> 
                         )
                     }))
@@ -50,7 +56,14 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete}) => {
             })
             .then((r) => r.json())
             .then((newExercise) => {
-                const updatedExercises  = [...allWorkoutExercises, <h5 className="exercise">{newExercise.name}: <br /> <br />{newExercise.instructions}</h5>] 
+                const updatedExercises  = [...allWorkoutExercises, 
+                <h5 className="exercise">
+                    {exercise.name}: 
+                    <br /> <br />
+                    {exercise.instructions}
+                    <br />
+                    <button className="exercise" onClick={() => handleExerciseDeleteClick(exercise, workout)}>X</button>
+                </h5> ] 
                 setAllWorkoutExercises(updatedExercises)
                 setExerciseAdded('false')
                 navigate(`/workout/${workout.id}`)
@@ -62,9 +75,19 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete}) => {
                 method: "DELETE",
               })
                 .then((r) => r.json())
-                .then(() => onWorkoutDelete(workout.id))
+                .then(() => onWorkoutDelete(exercise.id))
                 navigate('/')
       }
+
+      function handleExerciseDeleteClick(exercise, workout) {
+          debugger
+        fetch(`http://localhost:9292/workouts/${exercise.workout_id}/exercise/${exercise.id}`, {
+            method: "DELETE",
+          })
+            .then((r) => r.json())
+            .then(() => onExerciseDelete(exercise.id))
+            // navigate('/workouts/${workout.id}')
+  }
 
     return (  
         <div className="workout-info">
@@ -92,9 +115,7 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete}) => {
                 <button className="button">add exercise to workout</button>
                 </form>
             <br />
-           
             <button className="button" onClick={() => handleWorkoutDeleteClick(workout)}>delete workout</button>
-          
           </div>  
         </div>
     );

@@ -9,7 +9,8 @@ import EditWorkout from "./components/EditWorkout";
 const App = () => {
 
   const [workouts, setWorkouts] = useState([])
-  const [workoutdelete, setWorkoutdelete] = useState([]);
+  const [workoutDelete, setWorkoutDelete] = useState([])
+  const [exerciseDelete, setExerciseDelete] = useState([]);
 
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const App = () => {
      .then((workouts) => {
        setWorkouts(workouts)
       });
- }, [workoutdelete]);
+ }, [workoutDelete, exerciseDelete]);
 
  function handleUpdateWorkout(updatedWorkoutInfo) {
    const updatedWorkouts = workouts.map(workout => {
@@ -32,8 +33,23 @@ const App = () => {
  }
 
  function handleDeleteWorkout(deletedWorkout) {
-  const updatedWorkouts = workoutdelete.filter((workout) => workout.id !== deletedWorkout.id)
-  setWorkoutdelete(updatedWorkouts)
+  const updatedWorkouts = workoutDelete.filter((workout) => workout.id !== deletedWorkout.id)
+  setWorkoutDelete(updatedWorkouts)
+}
+
+// find workout 
+  // filter that workouts exercises
+  // map through all workouts returning the workout as is if its not the right one 
+  // returning the workout with the new set of filtered exercises 
+// set workouts to the map answe
+function handleDeleteExercise(deletedExercise) {
+  // debugger
+  const updatedExercises = workouts.map(workout => {
+    if (workout.exercise.id !== deletedExercise.id )
+  })
+
+  // const updatedExercises = exerciseDelete.filter((exercise) => exercise.id !== deletedExercise.id)
+  // setExerciseDelete(updatedExercises)
 }
 
   return ( 
@@ -43,7 +59,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home workouts={workouts} onWorkoutDelete={handleDeleteWorkout}/>}/>
         <Route exact path="/NewWorkout" element={<NewWorkout setWorkouts={setWorkouts} workouts={workouts}/>}/>
-        <Route path="/Workout/:id" element={<WorkoutInfo workouts={workouts} setWorkouts={setWorkouts} onWorkoutDelete={handleDeleteWorkout} onUpdateWorkout={handleUpdateWorkout}/>}/>
+        <Route path="/Workouts/:id" element={<WorkoutInfo workouts={workouts} setWorkouts={setWorkouts} onWorkoutDelete={handleDeleteWorkout} onExerciseDelete={handleDeleteExercise} onUpdateWorkout={handleUpdateWorkout}/>}/>
         <Route path="/workouts/:id/edit" element={<EditWorkout setWorkouts={setWorkouts} workouts={workouts} onUpdateWorkout={handleUpdateWorkout}/>}/>
       </Routes>
     </div>
