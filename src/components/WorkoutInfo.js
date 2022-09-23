@@ -79,13 +79,14 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
                 navigate('/')
       }
 
-      function handleExerciseDeleteClick(exercise, workout) {
-        //   debugger
+      function handleExerciseDeleteClick(exercise) {
+        //   exercise.workout_id = undefined 
+        // exercise.id = undefined 
         fetch(`http://localhost:9292/workouts/${exercise.workout_id}/exercise/${exercise.id}`, {
             method: "DELETE",
           })
             .then((r) => r.json())
-            .then(() => onExerciseDelete(exercise.id))
+            .then((data) => {debugger; onExerciseDelete(exercise.id)})
   }
 
     return (  
