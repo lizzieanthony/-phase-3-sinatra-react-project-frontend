@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {useNavigate, useParams} from "react-router-dom"
 
-const EditWorkout = ({ onUpdateWorkout}) => {
+const EditWorkout = ({workout, onUpdateWorkout}) => {
     const navigate = useNavigate()
     const [workoutName, setWorkoutName] = useState('')
     const [overview, setOverview] = useState('')

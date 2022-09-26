@@ -94,12 +94,14 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
 
     return (  
         <div className="workout-info">
+        <EditWorkout workout={workout} />
           <div>
             <h2>{workout.name}'s Workout</h2>
             <h4>{workout.directions}</h4>
             <Link to={`/workouts/${workout.id}/edit`}>
             <button className="button" onClick={onUpdateWorkout}>Edit workout</button>
             <br />
+            
             </Link>
             <br />
             <h5>{allWorkoutExercises}</h5>
