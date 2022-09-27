@@ -31,7 +31,6 @@ const NewWorkout = ({workouts, setWorkouts}) => {
                 navigate(`/workouts/${newWorkout.id}`)
             }) 
     };
-        // debugger
 
     return (  
         <div className="new">
@@ -52,8 +51,7 @@ const NewWorkout = ({workouts, setWorkouts}) => {
                     ></textarea>
                  <button>Add Exercises</button>
             </form>
-        </div>
-        
+        </div>   
     );
 }
  

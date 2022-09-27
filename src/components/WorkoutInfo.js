@@ -1,6 +1,5 @@
 import { useNavigate, useParams, Link} from "react-router-dom";
 import { useEffect, useState } from "react";
-import EditWorkout from "./EditWorkout";
 
 const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDelete}) => {
     const navigate = useNavigate()
@@ -79,22 +78,15 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
       }
 
       function handleExerciseDeleteClick(exercise) {
-        //   exercise.workout_id = undefined 
-        // exercise.id = undefined 
         fetch(`http://localhost:9292/workouts/${exercise.workout_id}/exercises/${exercise.id}`, {
             method: "DELETE",
           })
             .then((r) => r.json())
-            .then((data) => {onExerciseDelete(exercise.id)})
-  }
-
-  function passWorkout() {
-      return <EditWorkout workout={workout}/>
+            .then((exercise) => {onExerciseDelete(exercise.id)})
   }
 
     return (  
         <div className="workout-info">
-        <EditWorkout workout={workout} />
           <div>
             <h2>{workout.name}'s Workout</h2>
             <h4>{workout.directions}</h4>
@@ -122,7 +114,7 @@ const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDele
                 <button className="button">add exercise to workout</button>
                 </form>
             <br />
-            <button className="button" onClick={() => handleWorkoutDeleteClick(workout)}>delete workout</button>
+            <button className="button" onClick={() => handleWorkoutDeleteClick(workout)}>delete this workout</button>
           </div>  
         </div>
     );

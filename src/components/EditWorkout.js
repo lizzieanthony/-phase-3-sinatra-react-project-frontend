@@ -1,19 +1,13 @@
 import { useState } from "react";
 import {useNavigate, useParams} from "react-router-dom"
 
-const EditWorkout = ({workout, onUpdateWorkout}) => {
+const EditWorkout = ({workouts, onUpdateWorkout}) => {
     const navigate = useNavigate()
     const [workoutName, setWorkoutName] = useState('')
     const [overview, setOverview] = useState('')
     const [allWorkoutExercises, setAllWorkoutExercises] = useState([])
     const [workoutUpdated, setworkoutUpdated] = useState(false)
     const params = useParams()
-    // const [workout, setWorkout] = useState({
-    //     name: "",
-    //     directions: "",
-    //     exercises: [],
-    //     id: params.id
-    // });
 
     const handleWorkoutSubmit = (e) => {
         e.preventDefault();
@@ -39,17 +33,17 @@ const EditWorkout = ({workout, onUpdateWorkout}) => {
 
     return (  
         <div className="new">
-            <h2>EditWorkout</h2>
+            <h2>EditWorkout </h2>
             <form onSubmit={handleWorkoutSubmit}>
-                <label>Update The Name:</label>
+                <label>Update The Name:  <br/> <br/>{workouts[0].name} </label>
                 <input 
                     type="text" 
                     required
                     value={workoutName}
                     onChange={(e) => setWorkoutName(e.target.value)}
                     />
-                <label>Update The Workout Overview and Goals:</label>
-                    <textarea
+                <label>Update The Workout Overview and Goals: <br/> <br/>{workouts[0].directions}</label>
+                    <textarea 
                     required
                     value={overview}
                     onChange={(e) => setOverview(e.target.value)}

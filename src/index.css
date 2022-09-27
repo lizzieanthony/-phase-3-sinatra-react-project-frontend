@@ -36,6 +36,8 @@
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
+  background-color: #fafafa;
+
 }
 .workout-preview {
   padding: 10px 16px;
@@ -81,6 +83,7 @@
   margin: 20px auto;
   padding: 20px;
   text-align: center;
+  background-color: #f6eeee;
 }
 .button {
   background: #f1356d;
@@ -92,8 +95,8 @@
 }
 
 .exercise button {
-  background: #ffd3da;
-  color: #f1356d;
+  background: #f1356d;
+  color: #f6eeee;
   border: 0;
   padding: 8px;
   cursor: pointer;
@@ -110,13 +113,19 @@
   margin: 40px auto;
   padding: 20px;
   font-size: 18px;
-  font-weight: bold
+  font-weight: bold;
+  background-color: #ffd3da;
+
 }
 
 .new {
-  max-width: 400px;
-  margin: 0 auto;
+  margin: 20px 0;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
   text-align: center;
+  background-color: #f6eeee;
+
 }
 .new label {
   text-align: left;
