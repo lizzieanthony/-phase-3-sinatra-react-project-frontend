@@ -34,7 +34,7 @@ const NewWorkout = ({workouts, setWorkouts}) => {
 
     return (  
         <div className="new">
-            <h2>Add a New Workout</h2>
+            <h2>Share Your Workout</h2>
             <form onSubmit={handleSubmit}>
                 <label>Your Name:</label>
                 <input 
