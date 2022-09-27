@@ -35,7 +35,7 @@ const EditWorkout = ({workouts, onUpdateWorkout}) => {
         <div className="new">
             <h2>EditWorkout </h2>
             <form onSubmit={handleWorkoutSubmit}>
-                <label>Update The Name:  <br/> <br/>{workouts[0].name} </label>
+                <label>Update The Name:  <br/> <br/>{workouts.filter((workouts) => workouts.id).name} </label>
                 <input 
                     type="text" 
                     required
