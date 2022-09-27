@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap');
 
-
 * {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   color: #333;
-  /* text-align: center; */
-
 }
 
 .navbar {
@@ -32,32 +29,32 @@
 .navbar a:hover {
   color: #ffa0af
 }
+
 .content {
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
-  background-color: #fafafa;
-
 }
+
 .workout-preview {
   padding: 10px 16px;
   margin: 20px 0;
   border-bottom: 1px solid #fafafa;
   box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
-
+  background-color: #ffd3da
 }
 .workout-preview:hover {
-  background-color: #ffd3da;
+  background-color: #f6eeee;
 }
 .workout-preview h2 {
   font-size: 20px;
   color: #f1356d;
   margin-bottom: 8px;
 }
-
 .workout-preview a{
   text-decoration: none;
 }
+
 .workout-info h2 {
   font-size: 30px;
   color: #f1356d;
@@ -67,7 +64,6 @@
   padding: 10px;
   text-align: center;
 }
-
 .workout-info h4 {
   font-size: 25px;
   margin: 10px 0;
@@ -76,7 +72,6 @@
   padding: 20px;
   text-align: center;
 }
-
 .workout-info div {
   margin: 20px 0;
   max-width: 600px;
@@ -93,6 +88,10 @@
   border-radius: 8px;
   cursor: pointer;
 }
+.button:hover {
+  background-color: #ffa0af;
+  color: #f1356d;
+}
 
 .exercise button {
   background: #f1356d;
@@ -104,7 +103,10 @@
   border-radius: 50%;
   margin: 10px
 }
-
+.exercise button:hover {
+    background-color: #f6eeee;
+    color: #f1356d;
+  }
 .exercise {
   box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
   color: #f1356d;
@@ -144,6 +146,8 @@
   border: 1px solid #ddd;
   box-sizing: border-box;
   display: block;
+  background-color: #f6eeee;
+  color: #f1356d;
 }
 .new button {
   background: #f1356d;
@@ -153,8 +157,7 @@
   border-radius: 8px;
   cursor: pointer;
 }
-.new .submitted {
-  color: white;
-  background-color: #bf6609;
-  border-radius: 10px;
+.new button:hover {
+  background-color: #ffa0af;
+  color: #f1356d;
 }
