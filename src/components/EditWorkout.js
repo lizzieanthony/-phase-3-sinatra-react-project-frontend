@@ -35,7 +35,8 @@ const EditWorkout = ({workouts, onUpdateWorkout}) => {
         <div className="new">
             <h2>EditWorkout </h2>
             <form onSubmit={handleWorkoutSubmit}>
-                <label>Update The Name:  <br/> <br/>{workouts.filter((workouts) => workouts.id).name} </label>
+                <label>Update The Name:  <br/> <br/>
+                {workouts.map((workouts) =>{return ( <h5>{workouts.name}</h5>)})} </label>
                 <input 
                     type="text" 
                     required
@@ -57,3 +58,5 @@ const EditWorkout = ({workouts, onUpdateWorkout}) => {
 }
  
 export default EditWorkout;
+
+// {workouts.map((workouts) => workouts.id).name}
