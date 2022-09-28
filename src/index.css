@@ -129,6 +129,9 @@
   background-color: #f6eeee;
 
 }
+.updated {
+  color: #f1356d;
+}
 .new label {
   text-align: left;
   display: block;

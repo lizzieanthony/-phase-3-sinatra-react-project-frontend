@@ -35,15 +35,18 @@ const EditWorkout = ({workouts, onUpdateWorkout}) => {
         <div className="new">
             <h2>EditWorkout </h2>
             <form onSubmit={handleWorkoutSubmit}>
-                <label>Update The Name:  <br/> <br/>
-                {workouts.map((workouts) =>{return ( <h5>{workouts.name}</h5>)})} </label>
+                <label >current name: {workouts.find(w => w.id === parseInt(params.id)).name}</label>
+                <br/>
+                 <label className="updated">Updated Name:</label>
                 <input 
                     type="text" 
                     required
                     value={workoutName}
                     onChange={(e) => setWorkoutName(e.target.value)}
                     />
-                <label>Update The Workout Overview and Goals: <br/> <br/>{workouts[0].directions}</label>
+                <label>Current Workout Overview: {workouts.find(w => w.id === parseInt(params.id)).directions} </label>
+                <br/> 
+                <label className="updated">Updated Workout Overview:</label>
                     <textarea 
                     required
                     value={overview}
@@ -58,5 +61,3 @@ const EditWorkout = ({workouts, onUpdateWorkout}) => {
 }
  
 export default EditWorkout;
-
-// {workouts.map((workouts) => workouts.id).name}
