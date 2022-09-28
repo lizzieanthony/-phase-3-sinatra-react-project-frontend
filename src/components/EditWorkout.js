@@ -5,7 +5,6 @@ const EditWorkout = ({workouts, onUpdateWorkout}) => {
     const navigate = useNavigate()
     const [workoutName, setWorkoutName] = useState('')
     const [overview, setOverview] = useState('')
-    const [allWorkoutExercises, setAllWorkoutExercises] = useState([])
     const [workoutUpdated, setworkoutUpdated] = useState(false)
     const params = useParams()
 
@@ -53,9 +52,7 @@ const EditWorkout = ({workouts, onUpdateWorkout}) => {
                     onChange={(e) => setOverview(e.target.value)}
                     ></textarea>
                     <button className="button">save workout</button>
-            </form>
-            <h5>{allWorkoutExercises}</h5>
-           
+            </form>  
         </div>
     );
 }

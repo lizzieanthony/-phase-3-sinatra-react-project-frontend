@@ -2,6 +2,7 @@ import { useNavigate, useParams, Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const WorkoutInfo = ({workouts, onUpdateWorkout, onWorkoutDelete, onExerciseDelete}) => {
+    
     const navigate = useNavigate()
     const params = useParams()
     const [exerciseName, setExerciseName] = useState([])

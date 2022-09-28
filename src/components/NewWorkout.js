@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const NewWorkout = ({workouts, setWorkouts}) => {
+    
     const [workoutName, setWorkoutName] = useState('')
     const [overview, setOverview] = useState('')
     const [workoutAdded, setworkoutAdded] = useState(false)

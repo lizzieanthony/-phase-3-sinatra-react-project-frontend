@@ -1,7 +1,7 @@
-import React, { useState, useEffect}  from "react"; 
+import React, { useState, useEffect}  from "react";
+import { Route, Routes } from 'react-router-dom'; 
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import { Route, Routes } from 'react-router-dom';
 import NewWorkout from "./components/NewWorkout";
 import WorkoutInfo from "./components/WorkoutInfo";
 import EditWorkout from "./components/EditWorkout";
