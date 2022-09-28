@@ -49,8 +49,8 @@ function handleDeleteExercise(deletedExercise) {
       <Routes>
         <Route exact path="/" element={<Home workouts={workouts} onWorkoutDelete={handleDeleteWorkout}/>}/>
         <Route exact path="/newworkout" element={<NewWorkout setWorkouts={setWorkouts} workouts={workouts}/>}/>
-        <Route path="/workouts/:id" element={<WorkoutInfo workouts={workouts} setWorkouts={setWorkouts} onWorkoutDelete={handleDeleteWorkout} onExerciseDelete={handleDeleteExercise} onUpdateWorkout={handleUpdateWorkout}/>}/>
-        <Route path="/workouts/:id/edit" element={<EditWorkout setWorkouts={setWorkouts} workouts={workouts} onUpdateWorkout={handleUpdateWorkout}/>}/>
+        <Route path="/workouts/:id" element={<WorkoutInfo workouts={workouts} onWorkoutDelete={handleDeleteWorkout} onExerciseDelete={handleDeleteExercise} onUpdateWorkout={handleUpdateWorkout}/>}/>
+        <Route path="/workouts/:id/edit" element={<EditWorkout workouts={workouts} onUpdateWorkout={handleUpdateWorkout}/>}/>
       </Routes>
     </div>
      

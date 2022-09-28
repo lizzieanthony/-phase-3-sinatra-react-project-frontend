@@ -1,4 +1,3 @@
-import React, { useState, useEffect} from "react";
 import WorkoutList from "./WorkoutList";
 
 const Home = ({workouts}) => {
