@@ -11,7 +11,7 @@ First run $ npm install then $ npm run server
 
  Then in a new terminal run $ npm start
 
- ### Frontend Setup
+ ### Backend Setup
 
  In a new terminal, fork and clone the backend repo form here: 
  
